@@ -24,3 +24,10 @@ jobs:
         cache: maven
     - name: Build and Test
       run: mvn clean verify
+      # upload test result to calliope.pro
+    - name: Upload test results to calliope pro 
+      run: curl -X POST 
+        -H "x-api-key:${{secrets.API_KEY}}" 
+        -H "Content-Type:multipart/form-data" 
+        -F "file[]=@target/cucumber.json" 
+        "https://app.calliope.pro/api/v2/profile/${{secrets.PROFILE_ID}}/import?tag[]=os:myos&tag[]=platform:myplatform&tag[]=build:mybuild"
