@@ -18,7 +18,9 @@ public class AddingPetStepDef {
     final TestRunContext testRunContext = new TestRunContext();
     static Pet pet = new Pet();
 
-    static final int petId = 303602;
+    static Random r = new Random();
+
+    static final int petId = r.nextInt(100)+1;
     static final String petName = "funny";
     static final List<String> photoUrl = new ArrayList<>();
     static final String petStatus = "available";
